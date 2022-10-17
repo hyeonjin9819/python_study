@@ -9,34 +9,24 @@ sys.stdin = open("input.txt", "r")
 input = sys.stdin.readline
 
 T = int(input())
+count = 0
 
 # sum은 합, n은 문제의 입력 값
-def go(sum, goal):
-    sum = 0
-    count = 0
-    if (sum > goal):
-        return  # 정지조건?
+def go(sum, n):
+    if (sum > n): # 수의 합이 목표 값을 넘어가면 함수 종료
+        return
 
-    if (sum == goal):
+    elif(sum == n): #  수의 합이 목표 값과 같아지면 성공 횟수 +1
+        global count
         count += 1
-        return  # 정지조건?
+        return
 
-    if (sum < goal):
-        now = 0  # 현재 값
-
-        for i in (1, 4):
-            print(i)
-            print(n)
-            print(now)
-            #go(sum + i, n)
-            #print(go(sum+i, n))
-            now = now + go(sum+i, n)
-            # print(now)
-            #print(count)
-        return now
+    else:
+        for i in range(1, 4):
+            go(sum+i, n)
 
 for i in range(T):
     n = int(input())
-    #print(n)
     go(0, n)
-
+    print(count)
+    count = 0
