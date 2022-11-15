@@ -3,21 +3,21 @@ import sys
 sys.stdin = open("input.txt", "r")
 input = sys.stdin.readline
 
-white = []
-black = []
+one = []
+sec = []
 
 for i in range(3):
     data = list(map(int, input().split()))
     if i == 1:
-        white.append(data[1])
-        black.append(data[0])
+        one.append(data[1])
+        sec.append(data[0])
     else:
-        white.append(data[0])
-        black.append(data[1])
+        one.append(data[0])
+        sec.append(data[1])
 
-value = min(black) - min(white)
+value = min(one) - min(sec)
 
-if abs(value) > 2:
-    print(min(min(black),min(white))*2 +1)
+if abs(value) >= 2:
+    print(min(min(one), min(sec))*2 +1)
 else:
-    print(min(black) + min(white))
+    print(min(one) + min(sec))
