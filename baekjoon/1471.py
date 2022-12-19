@@ -35,7 +35,6 @@ for i in range(1,m):
                 for p in range(now, i):
                     if box[j][p] == 0:
                         cnt += 1
-                        print("증가요")
                         box[j][p] = 1
                     box[j][p] = 1
                     print(box)
