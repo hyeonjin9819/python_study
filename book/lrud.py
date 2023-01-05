@@ -19,3 +19,12 @@ for plan in plans:
         continue
     x, y = nx, ny
 print(x,y)
+
+
+for idx, val in enumerate(data):
+    dic.append((idx, val))
+
+    a = [[] for _ in range(n + 1)]
+    print("#{} {}".format(i+1, cnt))
+
+posList = [x for x in range(len(data[0])) if data[0][x] == '#']
