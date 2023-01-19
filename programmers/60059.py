@@ -19,9 +19,9 @@ def solution(s):
             if cnt != 1:
                 ans.append(str(cnt))
             ans.append(first)
-            print(list_chunked)
+            #print(list_chunked)
             result = "".join(ans)
-            print(ans)
+            #print(ans)
             real.append(len(result))
     if len(real) >0:
         return min(real)
