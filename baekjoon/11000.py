@@ -1,8 +1,22 @@
 import sys
+import heapq
 sys.stdin = open("input.txt", "r")
 
 input = sys.stdin.readline
+N = int(input())
+lessons = [list(map(int, input().split())) for _ in range(N)]
 
+# 수업 시작 시간 기준으로 오름차순 정렬함
+lessons = sorted(lessons, key=lambda x: x[0])
+
+q = []
+
+for lesson in lessons:
+    if q and q[0] <= lesson[0]:
+        heapq.heappop(q)
+    heapq.heappush(q, lesson[1])
+
+print(len(q))
 
 # 시간초과
 
