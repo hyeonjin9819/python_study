@@ -1,23 +1,51 @@
 import sys
-
+from collections import deque
 sys.stdin = open("input.txt", "r")
 
-T = int(input())
-N = int(input())
+o = int(input())
+t = int(input())
 
-graph = [[] for i in range(T+1)]
-visited = [0] * (T+1)
+cnt = 0
 
-for i in range(N):
-    a, b = map(int, input().split())
-    graph[a] += [b]
-    graph[b] += [a]
+graph = [[] for _ in range(o+1)]
 
-def dfs(num):
-    visited[num] = 1
-    for nx in graph[num]:
-        if visited[nx] == 0:
-            dfs(nx)
+visit = [0] * (o+1)
 
-dfs(1)
-print(sum(visited)-1)
+for _ in range(t):
+    n, m = map(int, input().split())
+    graph[n].append(m)
+    graph[m].append(n)
+
+for i in range(1, o+1):
+    graph[i].sort()
+
+print(graph)
+
+# def dfs(v, cnt):
+#     visit[v] = 1
+#     cnt += 1
+#     for nv in graph[v]:
+#         if visit[nv] == 0: # 아직 방문 안함
+#             visit[nv] = 1
+#             cnt = dfs(nv, cnt)
+#     return cnt
+#
+# print(dfs(1, 0) -1)
+
+def bfs(v, cnt):
+    visit = [0] * (o + 1)
+    q = deque()
+    visit[v] = 1 # 시작 방문처리
+    q.append(v)
+
+
+    while q:
+        cnt += 1
+        v = q.popleft()
+        for nv in graph[v]:
+            if visit[nv] == 0:
+                visit[nv] = 1
+                q.append(nv)
+    return cnt
+
+print(bfs(1,0)-1)
