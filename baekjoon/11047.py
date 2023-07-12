@@ -18,7 +18,7 @@ i =0
 while m != 0:
     if m // data[i] >0:
         cnt += m // data[i]
-        m -= m // data[i] * data[i]
+        m %= data[i]
     else:
         i += 1
 
